@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 
 import { Link } from 'react-router-dom'
 
@@ -165,10 +165,33 @@ const renderOrderBody = (item, index) => (
 const Dashboard = () => {
 
     const themeReducer = useSelector(state => state.ThemeReducer.mode)
+    const [ myData, setMyData ] = useState({})
+
+
+    const getData = () => {
+        // eslint-disable-next-line no-undef
+        google.script.run.withSuccessHandler(data => {
+            const position = data.position;
+            const company = data.company;
+            localStorage.setItem('position', position)
+            localStorage.setItem('company', company)
+            
+        }).withFailureHandler(er => {
+            alert('fail')
+            console.log('Did not succeed this time.')
+        }).getData()
+
+        let company = localStorage.getItem('company');
+        let position = localStorage.getItem('position')
+        let newData = {company, position}
+        setMyData({...myData, ...newData})
+
+    }
 
     return (
         <div>
             <h2 className="page-header">Dashboard</h2>
+            <button onClick={getData}>Click Me</button>
             <div className="row">
                 <div className="col-6">
                     <div className="row">
@@ -183,6 +206,12 @@ const Dashboard = () => {
                                 </div>
                             ))
                         }
+                    </div>
+                    <div className="row">
+                        <StatusCard 
+                        count={myData.company}
+                        title={myData.position}
+                        />
                     </div>
                 </div>
                 <div className="col-6">
