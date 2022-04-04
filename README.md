@@ -2,13 +2,9 @@
 
     Build React Admin Dashboard with Multiple Themes | React Admin Panel CSS | ReactJS
 
-# Video
-
-    https://youtu.be/q8cabjyUTVY
-
 # Description
 
-    We will Build React Admin Dashboard with Multiple Themes | React Admin Panel CSS | ReactJS
+    Template for fullstack web applications that are written using React for the front end, hosted and deployed using google apps script, and able to perform CRUD operations on persisted data using Google Sheets. The purpose of this template is to quickly spin up free, easily accessible web applications in order to more easily create custom software for individuals.
 
 # Resource
 
